@@ -1,0 +1,79 @@
+.events {
+  box-sizing: border-box;
+  max-width: var(--ss-desktop);
+  margin: 0 auto;
+  padding: 60px 105px;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+}
+
+.events__heading {
+  color: var(--color-text-accent);
+}
+
+.events__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.events__item-li {
+  list-style: none;
+}
+
+.events__item-link {
+  min-width: 324px;
+  max-width: 345px;
+  padding: 25px 20px;
+
+  border-radius: var(--radius-m);
+  background-image: url(../img/around-caucasus.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transition: transform 0.2s linear;
+}
+
+.events__item-link:active {
+  color: inherit;
+  transform: scale(0.97);
+}
+
+.events__location {
+  margin: 0;
+  background-color: var(--color-main);
+  border-radius: var(--radius-m);
+  width: fit-content;
+  padding: 8.5px 25px;
+  display: flex;
+  align-items: center;
+  column-gap: 8.5px;
+}
+
+.events__location::before {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  background-image: url(../img/ico-location.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.events__button {
+  background-color: transparent;
+  color: var(--color-main);
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: opacity 0.15s linear;
+}
+
+.events__button:hover {
+  opacity: 0.7;
+  outline: none;
+}

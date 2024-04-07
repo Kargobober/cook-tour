@@ -1,0 +1,13 @@
+:root {
+  --color-main: #d2691e;
+  --color-bg-main: #f0ead6;
+  --color-bg-alt: #fff;
+
+  --color-text-main: #fff;
+  --color-text-accent: #513833;
+
+  /* screen size */
+  --ss-desktop: 1440px;
+
+  --radius-m: 5px;
+}
