@@ -52,41 +52,31 @@
       <section data-test="events" class="events">
         <!-- События -->
         <h2 class="text-heading-2 events__heading">Предстоящие события</h2>
-        <ul class="events__list">
-          <li class="events__item-li">
-            <a class="link events__item-link" href="#">
-              <p class="events__location">Кавказ</p>
-              <p class="events__duration">4 дня</p>
-              <h3 class="events__event-heading">Гастрономическое путешествие вокруг Кавказа</h3>
-              <p class="events__text">Сложность:</p>
-              <div class="rating">
-                <div class="rating__item"></div>
-                <div class="rating__item"></div>
-                <div class="rating__item"></div>
-                <div class="rating__item rating__item_empty"></div>
-                <div class="rating__item rating__item_empty"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
+        <ul class="events__list" id="eventsList"></ul>
         <button class="button text-button events__button">Показать все курсы</button>
       </section>
     </main>
 
     <template id="template-event">
-      <li class="events__item">
-        <p class="events__location">Кавказ</p>
-        <p class="events__duration">4 дня</p>
-        <h3 class="events__event-heading">Гастрономическое путешествие вокруг Кавказа</h3>
-        <p class="events__text">Сложность:</p>
-        <div class="rating">
-          <div class="rating__item"></div>
-          <div class="rating__item"></div>
-          <div class="rating__item"></div>
-          <div class="rating__item rating__item_empty"></div>
-          <div class="rating__item rating__item_empty"></div>
-        </div>
+      <li class="events__item-li">
+        <a class="events__item-link link" href="#">
+          <p class="events__location text-caption_size_small"></p>
+          <div class="events__content">
+            <p class="events__duration text-main_size_small"></p>
+            <h3 class="events__event-heading text-heading-3"></h3>
+            <p class="events__complexity text-main_size_small">Сложность:</p>
+            <div class="rating">
+              <img class="rating__item" src="" />
+              <img class="rating__item" src="" />
+              <img class="rating__item" src="" />
+              <img class="rating__item" src="" />
+              <img class="rating__item" src="" />
+            </div>
+          </div>
+        </a>
       </li>
     </template>
+
+    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>
