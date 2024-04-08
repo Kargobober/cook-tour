@@ -36,4 +36,22 @@ const adigeyaMountSea = new Event(
   '/cupiMorzha'
 );
 
-export const events = [aroundCaucasus, altayPathToMaster, adigeyaMountSea];
+const yetAnotherEv = new Event(
+  'Пекин',
+  '17 дней',
+  'Утка. Рис. Сверчок',
+  3,
+  'altay-path-to-master.png',
+  '/cupi'
+);
+
+const chumay = new Event(
+  'Чумай',
+  '600 дней',
+  'От калашмы до кавармы',
+  5,
+  'chumay.png',
+  '/cupiKagor'
+);
+
+export const events = [aroundCaucasus, altayPathToMaster, adigeyaMountSea, yetAnotherEv, chumay];

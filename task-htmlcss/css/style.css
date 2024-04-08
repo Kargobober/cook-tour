@@ -1,6 +1,5 @@
 body {
   min-width: 320px;
-  width: 100vw;
   margin: 0 auto;
 
   font-family: Montserrat, sans-serif;
@@ -58,4 +57,8 @@ body {
 .button:hover {
   cursor: pointer;
   outline: 1px solid #fff;
+}
+
+.ds-none {
+  display: none;
 }

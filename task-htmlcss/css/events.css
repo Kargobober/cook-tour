@@ -1,4 +1,5 @@
 .events {
+  --event-height: 415px;
   box-sizing: border-box;
   max-width: var(--ss-desktop);
   margin: 0 auto;
@@ -14,21 +15,29 @@
 }
 
 .events__list {
-  display: flex;
-  flex-direction: column;
+  position: relative;
   margin: 0;
   padding: 0;
+  height: var(--event-height);
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px 30px;
+  transition: height 0.7s ease-in-out;
 }
 
 .events__item-li {
   list-style: none;
-  height: 415px;
+  flex: 1 1 390px;
+  min-width: 324px;
+  max-width: 390px;
+  height: var(--event-height);
 }
 
 .events__item-link {
   box-sizing: border-box;
-  min-width: 324px;
-  max-width: 390px;
+  width: 100%;
   height: 100%;
   padding: 25px 20px;
 

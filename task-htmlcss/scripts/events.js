@@ -35,3 +35,10 @@ export function createEvent({ location, duration, name, complexity, img, link })
 export function insertEvent(destination, event) {
   destination.append(event);
 }
+
+export const eventsExtendingStatus = {
+  isExtended: false,
+  toggleIndicator() {
+    this.isExtended = !this.isExtended;
+  },
+};
