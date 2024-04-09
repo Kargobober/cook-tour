@@ -59,6 +59,12 @@
     font-size: 56px;
     line-height: 56px;
   }
+
+  .text-heading-2 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -67,8 +73,19 @@
     line-height: 42px;
   }
 
+  .text-heading-2 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
   .text-main_size_big {
     font-size: 12px;
     line-height: 16px;
+  }
+
+  .text-button {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 18px;
   }
 }

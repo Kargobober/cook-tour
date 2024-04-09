@@ -40,10 +40,13 @@
       </div>
     </header>
     <main>
-      <section data-test="hero" class="hero" id="gero">
+      <section data-test="hero" class="hero">
         <!-- Hero -->
         <h1 class="text-heading-1 hero__heading">Исследуйте вкусы Кавказа</h1>
         <p class="text-main_size_big hero__text">
+          <!-- тесты не проходят, если перенести текст как-нибудь не так.
+            Тест пишет, что не может найти элемент с текстом :)
+            Потому в Претире поставил 100 знаков (printWidth) -->
           В сопровождении опытных шеф-поваров вы откроете для себя богатство кавказской кухни и
           научитесь готовить традиционные блюда.
         </p>
@@ -52,7 +55,81 @@
       <section data-test="events" class="events">
         <!-- События -->
         <h2 class="text-heading-2 events__heading">Предстоящие события</h2>
-        <ul class="events__list" id="eventsList"></ul>
+        <ul class="events__list" id="eventsList">
+          <!-- данные три пункта можно удалить или закомментировать,
+            если уже не нужна проверка тестами BackstopJS Report.
+            Тесты почему-то не запускают другие скрипты, потому события не рендерятся моим index.js
+          -->
+          <!-- <li class="events__item-li">
+            <a
+              class="events__item-link link"
+              href="/cupiSlona"
+              style="background-image: url('./img/around-caucasus.png')"
+            >
+              <p class="events__location text-caption_size_small">Кавказ</p>
+              <div class="events__content">
+                <p class="events__duration text-main_size_small">4 дня</p>
+                <h3 class="events__event-heading text-heading-3">
+                  Гастрономическое путешествие вокруг Кавказа
+                </h3>
+                <p class="events__complexity text-main_size_small">Сложность:</p>
+                <div class="rating">
+                  <img class="rating__item" src="./img/icon-rate-star.svg" />
+                  <img class="rating__item" src="./img/icon-rate-star.svg" />
+                  <img class="rating__item" src="./img/icon-rate-star.svg" />
+                  <img class="rating__item" src="./img/icon-rate-star-empty.svg" />
+                  <img class="rating__item" src="./img/icon-rate-star-empty.svg" />
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="events__item-li">
+            <a
+              class="events__item-link link"
+              href="/cupiShmelya"
+              style="background-image: url('./img/altay-path-to-master.png')"
+            >
+              <p class="events__location text-caption_size_small">Алтай</p>
+              <div class="events__content">
+                <p class="events__duration text-main_size_small">13 дней</p>
+                <h3 class="events__event-heading text-heading-3">
+                  Путь к мастерству в приготовлении блюд Алтая
+                </h3>
+                <p class="events__complexity text-main_size_small">Сложность:</p>
+                <div class="rating">
+                  <img class="rating__item" src="./img/icon-rate-star.svg" />
+                  <img class="rating__item" src="./img/icon-rate-star.svg" />
+                  <img class="rating__item" src="./img/icon-rate-star-empty.svg" />
+                  <img class="rating__item" src="./img/icon-rate-star-empty.svg" />
+                  <img class="rating__item" src="./img/icon-rate-star-empty.svg" />
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="events__item-li">
+            <a
+              class="events__item-link link"
+              href="/cupiMorzha"
+              style="background-image: url('./img/adigeya-mount-sea.png')"
+            >
+              <p class="events__location text-caption_size_small">Адыгея</p>
+              <div class="events__content">
+                <p class="events__duration text-main_size_small">6 дней</p>
+                <h3 class="events__event-heading text-heading-3">
+                  От горных трав до морских деликатесов
+                </h3>
+                <p class="events__complexity text-main_size_small">Сложность:</p>
+                <div class="rating">
+                  <img class="rating__item" src="./img/icon-rate-star.svg" />
+                  <img class="rating__item" src="./img/icon-rate-star.svg" />
+                  <img class="rating__item" src="./img/icon-rate-star.svg" />
+                  <img class="rating__item" src="./img/icon-rate-star.svg" />
+                  <img class="rating__item" src="./img/icon-rate-star-empty.svg" />
+                </div>
+              </div>
+            </a>
+          </li> -->
+        </ul>
         <button class="button text-button events__button">Показать все курсы</button>
       </section>
     </main>

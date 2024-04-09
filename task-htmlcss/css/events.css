@@ -24,7 +24,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px 30px;
-  transition: height 0.7s ease-in-out;
+  transition: height 0.7s 0.15s ease-in-out;
 }
 
 .events__item-li {
@@ -33,6 +33,13 @@
   min-width: 324px;
   max-width: 390px;
   height: var(--event-height);
+}
+
+.events__list::after {
+  content: "";
+  flex: 1 0 390px;
+  min-width: 324px;
+  max-width: 390px;
 }
 
 .events__item-link {
@@ -59,14 +66,18 @@
 }
 
 .events__location {
+  box-sizing: border-box;
   margin: 0;
-  background-color: var(--color-main);
-  border-radius: var(--radius-m);
-  width: fit-content;
   padding: 8px 23px;
+  width: fit-content;
+  min-width: 110px;
+
   display: flex;
   align-items: center;
   column-gap: 5px;
+
+  background-color: var(--color-main);
+  border-radius: var(--radius-m);
 }
 
 .events__location::before {
@@ -120,14 +131,73 @@
 }
 
 .events__button {
+  width: fit-content;
+  padding: 2px 5px 0 0;
+
+  display: flex;
+  column-gap: 11px;
+  align-self: center;
+
   background-color: transparent;
+
   color: var(--color-main);
   text-transform: uppercase;
   font-weight: 700;
+
   transition: opacity 0.15s linear;
 }
 
 .events__button:hover {
   opacity: 0.7;
   outline: none;
+}
+
+.events__button::after {
+  content: "";
+  width: 8px;
+  height: 16px;
+  display: block;
+
+  background-image: url(../img/icon-galka.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  transition: transform 0.15s linear;
+}
+
+.events__button.events__button_toggled::after {
+  transform: rotateZ(-90deg);
+}
+
+@media screen and (max-width: 1000px) {
+  .events__item-li {
+    max-width: 324px;
+  }
+
+  .events__list::after {
+    max-width: 324px;
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .events {
+    padding: 60px 45px 40px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .events {
+    padding: 70px 15px 40px;
+    row-gap: 30px;
+  }
+
+  .events__item-li {
+    max-width: 345px;
+  }
+
+  .events__button {
+    padding: 0;
+    column-gap: 8px;
+  }
 }

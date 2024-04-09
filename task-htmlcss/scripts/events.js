@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 const templateEvent = document
   .getElementById('template-event')
   .content.querySelector('.events__item-li');
@@ -38,7 +36,10 @@ export function insertEvent(destination, event) {
 
 export const eventsExtendingStatus = {
   isExtended: false,
-  toggleIndicator() {
+  textForButton: 'Показать все курсы',
+  toggleStatus() {
     this.isExtended = !this.isExtended;
+    this.textForButton =
+      this.textForButton === 'Показать все курсы' ? 'Свернуть список' : 'Показать все курсы';
   },
 };

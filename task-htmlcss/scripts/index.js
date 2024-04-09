@@ -35,7 +35,9 @@ eventsButton.addEventListener('click', () => {
     throw new Error('Нестыковка. При высоте списка 415px стэйт isExtended должен быть true.');
   }
 
-  eventsExtendingStatus.toggleIndicator();
+  eventsExtendingStatus.toggleStatus();
+  eventsButton.textContent = eventsExtendingStatus.textForButton;
+  eventsButton.classList.toggle('events__button_toggled');
 
   // если блок свёрнут
   if (eventsList.clientHeight === 415) {
