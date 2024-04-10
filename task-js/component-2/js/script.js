@@ -106,7 +106,7 @@
       },
     };
 
-    date.assign(...value.split('-'));
+    date.assign(...formatDate(value).split('-'));
 
     return date.checkYear() && date.checkMonth() && date.checkDay();
   }
@@ -129,8 +129,12 @@
     return difference / 1000 / 3600 / 24 >= param;
   }
 
+  /**
+   * @param {string} value - YYYY-MM-DD или DD.MM.YYYY
+   * @returns {string} YYYY-MM-DD
+   */
   function formatDate(value) {
-    if (value.indexOf('-')) {
+    if (value.indexOf('-') > -1) {
       return value;
     } else {
       const [day, month, year] = value.split('.');
