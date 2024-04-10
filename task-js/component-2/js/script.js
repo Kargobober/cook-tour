@@ -1,6 +1,7 @@
 (function () {
   /* Код компонента пишите здесь */
   const form = document.getElementById('booking-form');
+  const inputs = Array.from(form.querySelectorAll('input'));
   const inputPhone = document.getElementById('phone');
   const inputDateIn = document.getElementById('checkin-date');
   const inputDateOut = document.getElementById('checkout-date');
@@ -222,11 +223,22 @@
     validateAmountQuests();
   }
 
+  // при смене типа комнаты очищаем стилизацию полей с гостями
   inputsRoomType.forEach((input) => {
     input.addEventListener('change', () => {
       clearStyling(inputAmountAdults);
       clearStyling(inputAmountChildren);
     });
   });
+
+  // при изменении в инпуте, очищаем его стили
+  inputs
+    .filter((input) => input.type !== 'radio')
+    .forEach((input) => {
+      input.addEventListener('input', () => {
+        clearStyling(input);
+      });
+    });
+
   form.addEventListener('submit', handleSubmit);
 })();
