@@ -14,7 +14,6 @@
    */
   const regExpPhoneStartNomenclature = /(?:\+7)[()\-\s\d]/;
   const regExpDate = /\d{4}-\d{2}-\d{2}\b|\d{2}.\d{2}.\d{4}\b/;
-  // const regExpDate = /(\d{4})-(\d{2})-(\d{2})/;
 
   function styleCorrectly(input) {
     input.classList.remove(classError);
@@ -44,10 +43,11 @@
   }
 
   /**
+   * проверка валидности частей даты (число дней в месяцах и т.д.)
    * @param {string} value - YYYY-MM-DD или DD.MM.YYYY
    * @returns {boolean}
    */
-  function checkDateRange(value) {
+  function checkDateValidity(value) {
     const date = {
       year: null,
       month: null,
@@ -56,7 +56,6 @@
         this.year = Number(year);
         this.month = Number(month);
         this.day = Number(day);
-        console.log('записали данные', { date });
       },
       checkYear() {
         const currentDate = new Date();
@@ -107,25 +106,50 @@
       },
     };
 
-    if (value.indexOf('-')) {
-      const [year, month, day] = value.split('-');
-      date.assign(year, month, day);
-    } else {
-      const [day, month, year] = value.split('.');
-      date.assign(year, month, day);
-    }
+    date.assign(...value.split('-'));
 
     return date.checkYear() && date.checkMonth() && date.checkDay();
   }
 
+  /**
+   * проверка на минимал. кол-во дней бронирования
+   * @param {number} param - критерий, число дней
+   * @param {string} dateIn - дата заезда, только YYYY-MM-DD
+   * @param {string} dateOut - дата выезда, только YYYY-MM-DD
+   * @returns {boolean}
+   */
+  function checkBookingRange(param, dateIn, dateOut) {
+    const inTimestamp = new Date(dateIn);
+    const outTimestamp = new Date(dateOut);
+
+    /**
+     * разница в миллисекундах
+     */
+    const difference = outTimestamp.getTime() - inTimestamp.getTime();
+    return difference / 1000 / 3600 / 24 >= param;
+  }
+
+  function formatDate(value) {
+    if (value.indexOf('-')) {
+      return value;
+    } else {
+      const [day, month, year] = value.split('.');
+      return `${year}-${month}-${day}`;
+    }
+  }
+
   function validateDate() {
+    const dateIn = formatDate(inputDateIn.value);
+    const dateOut = formatDate(inputDateOut.value);
+
     // первичная проверка на верный формат чисел с пом. регулярных выражений
     // вторичная проверка на диапазоны дат
     if (
       regExpDate.test(inputDateIn.value) &&
       regExpDate.test(inputDateOut.value) &&
-      checkDateRange(inputDateIn.value) &&
-      checkDateRange(inputDateOut.value)
+      checkDateValidity(dateIn) &&
+      checkDateValidity(dateOut) &&
+      checkBookingRange(4, dateIn, dateOut)
     ) {
       styleCorrectly(inputDateIn);
       styleCorrectly(inputDateOut);
