@@ -4,6 +4,9 @@
   const inputPhone = document.getElementById('phone');
   const inputDateIn = document.getElementById('checkin-date');
   const inputDateOut = document.getElementById('checkout-date');
+  const inputAmountAdults = document.getElementById('adults');
+  const inputAmountChildren = document.getElementById('children');
+  const inputsRoomType = Array.from(document.querySelectorAll('input[name=room-type]'));
 
   const classCorrect = 'field-correct';
   const classError = 'field-error';
@@ -23,6 +26,11 @@
   function styleErroneous(input) {
     input.classList.remove(classCorrect);
     input.classList.add(classError);
+  }
+
+  function clearStyling(input) {
+    input.classList.remove(classCorrect);
+    input.classList.remove(classError);
   }
 
   function validatePhone(input) {
@@ -165,12 +173,60 @@
     }
   }
 
+  function validateAmountQuests() {
+    const amountAdults = Number(inputAmountAdults.value);
+    const amountChildren = Number(inputAmountChildren.value);
+    /**
+     * single | double | family
+     */
+    const currentRoomType = inputsRoomType.find((input) => input.checked === true).value;
+
+    let isAdultsIntegerAndMinimum = amountAdults === 1;
+    const isChildrenInteger = Number.isInteger(amountChildren);
+    let isChildrenBelowMax = amountChildren <= amountAdults;
+    let isChildrenAboveMin = amountChildren >= 0;
+
+    switch (currentRoomType) {
+      case 'double':
+        isAdultsIntegerAndMinimum = amountAdults === 2;
+        break;
+      case 'family':
+        isAdultsIntegerAndMinimum = Number.isInteger(amountAdults) && amountAdults >= 2;
+        isChildrenBelowMax = true;
+        isChildrenAboveMin = amountChildren >= 1;
+        break;
+      default: // 'single'
+    }
+
+    if (
+      isAdultsIntegerAndMinimum &&
+      isChildrenInteger &&
+      isChildrenBelowMax &&
+      isChildrenAboveMin
+    ) {
+      styleCorrectly(inputAmountAdults);
+      styleCorrectly(inputAmountChildren);
+      return true;
+    } else {
+      styleErroneous(inputAmountAdults);
+      styleErroneous(inputAmountChildren);
+      return false;
+    }
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
 
     validatePhone(inputPhone);
     validateDate();
+    validateAmountQuests();
   }
 
+  inputsRoomType.forEach((input) => {
+    input.addEventListener('change', () => {
+      clearStyling(inputAmountAdults);
+      clearStyling(inputAmountChildren);
+    });
+  });
   form.addEventListener('submit', handleSubmit);
 })();
