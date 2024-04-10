@@ -22,7 +22,7 @@
    * например: ?tabs_limit=1
    */
   const settings = {
-    tabsLimit: getUrlValue('tabs_limit') || 1,
+    tabsLimit: getUrlValue('tabs_limit') || 0,
   };
 
   /* Код компонента пишите ниже */
